@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using SugarCreek.Models;
+using SugarCreek_BusinessLayer.GolferSupport;
+using SugarCreek_DataLayer;
 
 namespace SugarCreek.Controllers
 {
@@ -155,6 +157,14 @@ namespace SugarCreek.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    var golfer = new Golfer {
+                        Id = Guid.NewGuid(),
+                        UserId = user.Id,
+                        GolfersName = model.Email
+                    };
+
+                    GolferHelper.CreateGolfer(golfer);
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

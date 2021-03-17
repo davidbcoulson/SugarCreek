@@ -62,8 +62,23 @@
     <Compile Include="AspNetUserLogin.cs">
       <DependentUpon>SugarCreekModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Cart.cs">
+      <DependentUpon>SugarCreekModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CartRoundMapper.cs">
+      <DependentUpon>SugarCreekModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Class1.cs" />
+    <Compile Include="Golfer.cs">
+      <DependentUpon>SugarCreekModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Round.cs">
+      <DependentUpon>SugarCreekModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoundMapper.cs">
+      <DependentUpon>SugarCreekModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SugarCreekModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -78,6 +93,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SugarCreekModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="TeeTime.cs">
+      <DependentUpon>SugarCreekModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

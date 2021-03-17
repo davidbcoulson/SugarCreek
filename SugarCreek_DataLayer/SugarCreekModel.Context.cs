@@ -29,5 +29,11 @@ namespace SugarCreek_DataLayer
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<CartRoundMapper> CartRoundMappers { get; set; }
+        public virtual DbSet<Cart> Carts { get; set; }
+        public virtual DbSet<Golfer> Golfers { get; set; }
+        public virtual DbSet<RoundMapper> RoundMappers { get; set; }
+        public virtual DbSet<Round> Rounds { get; set; }
+        public virtual DbSet<TeeTime> TeeTimes { get; set; }
     }
 }

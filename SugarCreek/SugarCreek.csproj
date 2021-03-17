@@ -367,6 +367,16 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SugarCreek_BusinessLayer\SugarCreek_BusinessLayer.csproj">
+      <Project>{ab90aa7c-9223-4fd5-84ae-8966d0c35a5b}</Project>
+      <Name>SugarCreek_BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SugarCreek_DataLayer\SugarCreek_DataLayer.csproj">
+      <Project>{2c827e40-5d18-4de4-a90e-36ca1d29f78a}</Project>
+      <Name>SugarCreek_DataLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
