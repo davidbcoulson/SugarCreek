@@ -53,9 +53,8 @@ dkms.conf
 SugarCreek/bin/
 SugarCreek/packages/
 SugarCreek/obj/
-SugarCreek/Scripts/src/
-SugarCreek/Scripts/
 SugarCreek_BusinessLayer/obj/
 SugarCreek_DataLayer/obj/
 SugarCreek_DataLayer/bin/
 SugarCreek_BusinessLayer/bin/
+SugarCreek/Scripts/src/
