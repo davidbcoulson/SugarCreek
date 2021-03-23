@@ -52,8 +52,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BookingSupport\Booking.cs" />
+    <Compile Include="CartsSupport\CartHelper.cs" />
     <Compile Include="GolferSupport\GolferHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoundsSupport\RoundsHelper.cs" />
+    <Compile Include="TeeTimeSupport\TeeTimes.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SugarCreek_DataLayer\SugarCreek_DataLayer.csproj">
