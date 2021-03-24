@@ -6,7 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <base href="/" />
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -30,6 +30,12 @@
         </div>
     </div>
     <div class="container body-content">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <app-root>
+
+            </app-root>
+        }
         @RenderBody()
         <hr />
         <footer>
@@ -37,6 +43,7 @@
         </footer>
     </div>
 
+    @Scripts.Render("~/bundles/AngularJs")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

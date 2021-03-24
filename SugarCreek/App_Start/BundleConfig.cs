@@ -25,6 +25,21 @@ namespace SugarCreek
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            //Angular bundles
+            bundles.Add(new Bundle("~/bundles/AngularJs").Include(
+                        "~/Bundles/AngularOutput/inline.*",
+                        "~/Bundles/AngularOutput/polyfills.*",
+                        "~/Bundles/AngularOutput/scripts.*",
+                        "~/Bundles/AngularOutput/vendor.*",
+                        "~/Bundles/AngularOutput/runtime.*",
+                        "~/Bundles/AngularOutput/main.*"));
+
+            bundles.Add(new StyleBundle("~/bundles/Angular").Include(
+                    "~/Bundles/AngularOutput/styles.*"));
+
+
+
         }
     }
 }
