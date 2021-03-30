@@ -69,24 +69,11 @@
     <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Owin.Security.Cookies.4.1.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Owin.Security.Facebook, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Owin.Security.Facebook.4.1.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.Google, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Owin.Security.Google.4.1.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Owin.Security.MicrosoftAccount.4.1.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Owin.Security.OAuth.4.1.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Owin.Security.Twitter, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Owin.Security.Twitter.4.1.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -152,7 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.Formatting">
       <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -187,8 +174,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RoundsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -231,6 +220,13 @@
     <Content Include="Angular\src\favicon.ico" />
     <Content Include="Angular\src\index.html" />
     <Content Include="Angular\src\styles.css" />
+    <Content Include="App_Start\Bundles\AngularOutput\favicon.ico" />
+    <Content Include="App_Start\Bundles\AngularOutput\index.html" />
+    <Content Include="App_Start\Bundles\AngularOutput\main.js" />
+    <Content Include="App_Start\Bundles\AngularOutput\polyfills.js" />
+    <Content Include="App_Start\Bundles\AngularOutput\runtime.js" />
+    <Content Include="App_Start\Bundles\AngularOutput\styles.css" />
+    <Content Include="App_Start\Bundles\AngularOutput\vendor.js" />
     <Content Include="Bundles\AngularOutput\favicon.ico" />
     <Content Include="Bundles\AngularOutput\index.html" />
     <Content Include="Bundles\AngularOutput\main.js" />
@@ -293,6 +289,11 @@
     <Content Include="Angular\dist\out-tsc\src\main.js.map" />
     <Content Include="Angular\dist\out-tsc\src\polyfills.js.map" />
     <Content Include="Angular\dist\out-tsc\src\test.js.map" />
+    <Content Include="App_Start\Bundles\AngularOutput\main.js.map" />
+    <Content Include="App_Start\Bundles\AngularOutput\polyfills.js.map" />
+    <Content Include="App_Start\Bundles\AngularOutput\runtime.js.map" />
+    <Content Include="App_Start\Bundles\AngularOutput\styles.css.map" />
+    <Content Include="App_Start\Bundles\AngularOutput\vendor.js.map" />
     <Content Include="Bundles\AngularOutput\main.js.map" />
     <Content Include="Bundles\AngularOutput\polyfills.js.map" />
     <Content Include="Bundles\AngularOutput\runtime.js.map" />

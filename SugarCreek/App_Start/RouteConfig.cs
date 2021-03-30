@@ -14,6 +14,18 @@ namespace SugarCreek
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+            name: "logout",
+            url: "Account/Logoff",
+            defaults: new { controller = "Account", action = "Logoff", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "login",
+                url: "Account/Login",
+                defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional }
+                );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
