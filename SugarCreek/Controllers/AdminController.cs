@@ -1,9 +1,17 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using SugarCreek.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using Microsoft.AspNetCore.Identity;
+using System.Web;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SugarCreek.Controllers
 {
@@ -16,5 +24,31 @@ namespace SugarCreek.Controllers
         {
             return "connection made";
         }
+
+        [Route("api/creategolfer")]
+        [HttpPost]
+        public async Task<bool> CreateGolfer([FromBody] string email)
+        {
+            try 
+            {
+                using (var context = new ApplicationDbContext())
+                {
+                    var userStore = new UserStore<ApplicationUser>(context);
+                    var userManager = new Microsoft.AspNet.Identity.UserManager<ApplicationUser>(userStore);
+
+                    var user = new ApplicationUser { UserName = email };
+                    await userManager.CreateAsync(user);
+                   // await userManager.AddToRoleAsync(user.Id, "Administrator");
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+
+
     }
 }
