@@ -1,16 +1,7 @@
-﻿using Microsoft.AspNet.Identity;
-using SugarCreek.Models;
+﻿using SugarCreek.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using Microsoft.AspNetCore.Identity;
-using System.Web;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SugarCreek.Controllers
