@@ -443,6 +443,7 @@
     <TypeScriptCompile Include="Angular\src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="Angular\src\app\app.component.ts" />
     <TypeScriptCompile Include="Angular\src\app\app.module.ts" />
+    <TypeScriptCompile Include="Angular\src\app\create-rounds\create-round.service.ts" />
     <TypeScriptCompile Include="Angular\src\app\create-rounds\create-rounds.component.spec.ts" />
     <TypeScriptCompile Include="Angular\src\app\create-rounds\create-rounds.component.ts" />
     <TypeScriptCompile Include="Angular\src\app\get-rounds\get-rounds.component.spec.ts" />

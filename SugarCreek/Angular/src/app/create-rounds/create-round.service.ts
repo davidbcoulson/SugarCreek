@@ -15,7 +15,7 @@ export class CreateRoundService {
 
   constructor(private http: HttpClient) { }
 
-  createLesson(request): Observable<any> {
+  createRound(request): Observable<any> {
     const headers = new HttpHeaders().set('content-type', 'application/json');
     var body = request;
     return this.http.post<any>(this.postCreateRoundEndPoint, body, { headers });

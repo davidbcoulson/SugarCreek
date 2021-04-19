@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { CreateRoundService } from './create-round.service';
 
 @Component({
   selector: 'app-create-rounds',
@@ -18,19 +19,16 @@ export class CreateRoundsComponent implements OnInit {
     cart: new FormControl(''),
   })
 
-  constructor() { }
+  constructor(private service: CreateRoundService) { }
 
   ngOnInit(): void {
   }
 
   submitForm() {
-    this.formclass = "hidden";
-    this.loaderclass = "visible"
-    this.service.submitContactRequest(this.teeTimeRequest.value).subscribe(x => {
+    this.service.createRound(this.teeTimeRequest.value).subscribe(x => {
+      debugger
       console.log(x);
     }, err => { console.log(err) }, () => {
-      this.loaderclass = "hidden";
-      this.successMessage = "visible";
     })
   }
 }
