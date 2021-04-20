@@ -20,5 +20,17 @@ namespace SugarCreek_BusinessLayer.RoundsSupport
 
         }
 
+        public static void CreateTeeTime(TeeTime tt) 
+        {
+            using (SugarCreekEntities db = new SugarCreekEntities())
+            {
+                db.TeeTimes.Add(tt);
+                db.SaveChanges();
+            }
+        }
+
+
+
+
     }
 }
