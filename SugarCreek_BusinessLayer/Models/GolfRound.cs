@@ -8,6 +8,7 @@ namespace SugarCreek_BusinessLayer.Models
 {
     public class GolfRound
     {
-
+        public DateTime StartTime { get; set; }
+        public int NumberOfHoles { get; set; }
     }
 }

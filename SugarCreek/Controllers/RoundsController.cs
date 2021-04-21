@@ -45,7 +45,7 @@ namespace SugarCreek.Controllers
         [HttpGet]
         [Authorize]
 
-        public List<Round> GetUsersRounds()
+        public List<GolfRound> GetUsersRounds()
         {
             return RoundsHelper.GetRounds(User.Identity.GetUserId());
         }

@@ -1,4 +1,5 @@
-﻿using SugarCreek_DataLayer;
+﻿using SugarCreek_BusinessLayer.Models;
+using SugarCreek_DataLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,17 +60,21 @@ namespace SugarCreek_BusinessLayer.RoundsSupport
 
         }
 
-        public static List<Round> GetRounds(string golferId)
+        public static List<GolfRound> GetRounds(string golferId)
         {
-            List<Round> rounds = new List<Round>();
+            List<GolfRound> rounds = new List<GolfRound>();
             using (SugarCreekEntities db = new SugarCreekEntities())
             {
                 var golfer = db.Golfers.Where(x => x.UserId == golferId).FirstOrDefault();
-                var mappers = db.RoundMappers.Where(x => x.GolferId == golfer.Id).ToList();
+                var mappers = db.RoundMappers.Include("Round").Where(x => x.GolferId == golfer.Id).ToList();
                 foreach (var item in mappers)
                 {
-                    var round = db.Rounds.Include("TeeTime").Include("RoundMappers").Where(x => x.Id == item.RoundId).FirstOrDefault();
-                    rounds.Add(round);
+                    GolfRound gr = new GolfRound()
+                    {
+                        NumberOfHoles = item.Round.NumberOfHoles.Value,
+                        StartTime = item.Round.TeeTime.StartTime.Value
+                    };
+                    rounds.Add(gr);
                 }
                 return rounds;
             }
