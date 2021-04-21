@@ -1,8 +1,10 @@
-﻿using SugarCreek.Models;
+﻿using Microsoft.AspNet.Identity;
+using SugarCreek.Models;
 using SugarCreek_BusinessLayer.Models;
 using SugarCreek_BusinessLayer.RoundsSupport;
 using SugarCreek_DataLayer;
 using System;
+using System.Collections.Generic;
 using System.Web.Http;
 
 namespace SugarCreek.Controllers
@@ -22,15 +24,11 @@ namespace SugarCreek.Controllers
                     StartTime = request.TeeTime
                 };
 
-                //Round round = new Round { 
-                //NumberOfHoles = request.NumberOfHoles,
-                //Id = teeTime.Id,
-
-                //}
-
+               
                 try {
                     RoundsHelper.CreateTeeTime(teeTime);
-                    //RoundsHelper.CreateRound(teeTime.Id, request.NumberOfHoles)
+                    var round = RoundsHelper.CreateRound(teeTime.Id, request.NumberOfHoles);
+                    RoundsHelper.CreateRoundMapper(round.Id, User.Identity.GetUserId());
                 }
                 catch (Exception ex) 
                 {
@@ -42,6 +40,16 @@ namespace SugarCreek.Controllers
             return null;
             
         }
+
+        [Route("api/rounds/getRounds")]
+        [HttpGet]
+        [Authorize]
+
+        public List<Round> GetUsersRounds()
+        {
+            return RoundsHelper.GetRounds(User.Identity.GetUserId());
+        }
+
 
     }
 }

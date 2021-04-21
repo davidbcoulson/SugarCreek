@@ -9,18 +9,28 @@ namespace SugarCreek_BusinessLayer.RoundsSupport
 {
     public class RoundsHelper
     {
-       public static void CreateRound(Round round)
+        public static Round CreateRound(Guid teeTimeId, int numberOfHoles)
         {
+            Round round = new Round
+            {
+                NumberOfHoles = numberOfHoles,
+                Id = Guid.NewGuid(),
+                CartId = Guid.NewGuid(),
+                TeeTimeId = teeTimeId
+
+            };
+
+
             using (SugarCreekEntities db = new SugarCreekEntities())
             {
                 db.Rounds.Add(round);
                 db.SaveChanges();
 
             }
-
+            return round;
         }
 
-        public static void CreateTeeTime(TeeTime tt) 
+        public static void CreateTeeTime(TeeTime tt)
         {
             using (SugarCreekEntities db = new SugarCreekEntities())
             {
@@ -29,8 +39,40 @@ namespace SugarCreek_BusinessLayer.RoundsSupport
             }
         }
 
+        public static void CreateRoundMapper(Guid roundId, string golferId)
+        {
+            using (SugarCreekEntities db = new SugarCreekEntities())
+            {
+                var golfer = db.Golfers.Where(x => x.UserId == golferId).FirstOrDefault();
+
+                RoundMapper roundMapper = new RoundMapper
+                {
+                    Id = Guid.NewGuid(),
+                    GolferId = golfer.Id,
+                    RoundId = roundId
+                };
 
 
+                db.RoundMappers.Add(roundMapper);
+                db.SaveChanges();
+            }
 
+        }
+
+        public static List<Round> GetRounds(string golferId)
+        {
+            List<Round> rounds = new List<Round>();
+            using (SugarCreekEntities db = new SugarCreekEntities())
+            {
+                var golfer = db.Golfers.Where(x => x.UserId == golferId).FirstOrDefault();
+                var mappers = db.RoundMappers.Where(x => x.GolferId == golfer.Id).ToList();
+                foreach (var item in mappers)
+                {
+                    var round = db.Rounds.Include("TeeTime").Include("RoundMappers").Where(x => x.Id == item.RoundId).FirstOrDefault();
+                    rounds.Add(round);
+                }
+                return rounds;
+            }
+        }
     }
 }
