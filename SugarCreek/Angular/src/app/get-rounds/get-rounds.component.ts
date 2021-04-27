@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GetRoundsService } from './get-rounds.service';
 
 @Component({
   selector: 'app-get-rounds',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GetRoundsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: GetRoundsService) {}
+
+  public teeTimes: any;
 
   ngOnInit(): void {
+    this.service.getRound().subscribe(x => {
+      console.log(x);
+      this.teeTimes = x;
+    })
   }
 
 }

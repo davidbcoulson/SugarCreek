@@ -448,6 +448,7 @@
     <TypeScriptCompile Include="Angular\src\app\create-rounds\create-rounds.component.ts" />
     <TypeScriptCompile Include="Angular\src\app\get-rounds\get-rounds.component.spec.ts" />
     <TypeScriptCompile Include="Angular\src\app\get-rounds\get-rounds.component.ts" />
+    <TypeScriptCompile Include="Angular\src\app\get-rounds\get-rounds.service.ts" />
     <TypeScriptCompile Include="Angular\src\app\main\main.component.spec.ts" />
     <TypeScriptCompile Include="Angular\src\app\main\main.component.ts" />
     <TypeScriptCompile Include="Angular\src\environments\environment.prod.ts" />

@@ -156,14 +156,14 @@ namespace SugarCreek.Controllers
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
-                {
-                    var golfer = new Golfer {
-                        Id = Guid.NewGuid(),
-                        UserId = user.Id,
-                        GolfersName = model.Email
-                    };
+                { 
+                //    var golfer = new Golfer {
+                //        Id = Guid.NewGuid(),
+                //        UserId = user.Id,
+                //        GolfersName = model.Email
+                //    };
 
-                    GolferHelper.CreateGolfer(golfer);
+                //    GolferHelper.CreateGolfer(golfer);
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     

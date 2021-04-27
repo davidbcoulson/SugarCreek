@@ -3,6 +3,20 @@
     padding-bottom: 20px;
 }
 
+.createArea {
+    padding: 68px;
+    background-color: #eee;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+.displayArea {
+    padding: 68px;
+    background-color: lightcyan;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
