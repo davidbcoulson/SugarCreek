@@ -1,19 +1,19 @@
-<button>Add a New Round</button>
+<div style="font-size: 40px; text-align: center;"><u>Add a New Round</u></div>
 <form [formGroup]="teeTimeRequest" style="background-color: rgba(255, 255, 255, 0.09); padding: 16px; border-radius: 16px;" [class]="formclass">
   <div class="form-group">
-    <label style="color: #fff;display: flex;">Name:</label>
+    <label style="color: #000000;display: flex;">When would you like your round?</label>
     <input type="datetime-local" class="form-control" formControlName="teeTime" required="required" placeholder="TeeTime" />
   </div>
   <div class="form-group">
-    <label style="color: #fff;display: flex;">Name:</label>
+    <label style="color: #000000;display: flex;">How many holes would you like to play?</label>
     <input type="number" class="form-control" formControlName="numberOfHoles" required="required" placeholder="Number Of Holes" />
   </div>
   <div class="form-group">
-    <label style="color: #fff;display: flex;">Name:</label>
+    <label style="color: #000000;display: flex;">Check the box if you'd like to rent a cart for your round.</label>
     <input type="checkbox" class="form-control" formControlName="cart" required="required" placeholder="Cart?" />
   </div>
   <div class="form-group">
-    <button class="btn draw-border" type="submit" (click)="submitForm()">Submit</button>
+    <button class="btn draw-border"  type="submit" (click)="submitForm()" Text-align:>Submit</button>
   </div>
 </form>
 

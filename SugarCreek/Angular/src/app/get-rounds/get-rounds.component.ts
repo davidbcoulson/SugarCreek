@@ -18,5 +18,4 @@ export class GetRoundsComponent implements OnInit {
       this.teeTimes = x;
     })
   }
-
-}
+ }
