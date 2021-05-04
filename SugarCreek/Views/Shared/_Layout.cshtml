@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <base href="/" />
@@ -31,7 +30,7 @@
             </div>
         </div>
     </div>
-    <div style="        background-color: rgb(115, 232, 255);">
+    <div style=" background-image: url('../../Images/SCGolf.jpg');background-size: cover;padding: 56px;height: 100%;">
         <div class="container body-content">
             @if (User.Identity.IsAuthenticated)
             {
@@ -39,29 +38,18 @@
 
                 </app-root>
             }
-            @RenderBody()
-            <hr />
-            <!--Waves Container-->
-            <div class="wavesBottom">
-                <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                     viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-                    <defs>
-                        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-                    </defs>
-                    <g class="parallax">
-                        <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(3,140, 140,0.7" />
-                        <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(2,115,115,0.7)" />
-                        <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(2,58,64,0.7)" />
-                        <use xlink:href="#gentle-wave" x="48" y="7" fill="#022873" />
-                    </g>
-                </svg>
-            </div>
-            <!--Waves end-->
-            <footer>
-                <p style="color:white;">&copy; @DateTime.Now.Year - My ASP.NET Application "Sugar Creek"</p>
-            </footer>
-        </div>
-
+            else
+            {
+                <h1>Sugar Creek Landing Page</h1>
+                <div class="row" style="display:flex; justify-content:center">
+                    <div class="col-md-6">
+                        <div style="background-image: url('../../../../Images/Sugar Creek.png');height: 450px; width: auto; background-color: #ccc; border-radius: 26px;"></div>
+                    </div>
+                </div>
+             }
+                    @RenderBody()
+                </div>
+    </div>
         @Scripts.Render("~/bundles/AngularJs")
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")

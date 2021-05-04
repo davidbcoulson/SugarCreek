@@ -244,6 +244,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\SCGolf.jpg" />
+    <Content Include="Images\Sugar Creek.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
@@ -301,6 +303,7 @@
     <Content Include="Bundles\AngularOutput\runtime.js.map" />
     <Content Include="Bundles\AngularOutput\styles.css.map" />
     <Content Include="Bundles\AngularOutput\vendor.js.map" />
+    <Content Include="fonts\Montserrat-Black.ttf" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
