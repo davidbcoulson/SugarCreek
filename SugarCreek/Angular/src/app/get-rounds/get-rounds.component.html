@@ -1,1 +1,46 @@
-<button> Get Rounds Available</button>
+<!--<button> Get Rounds Available</button>-->
+ <div style="font-size: 40px; text-align: center;"><u>Past Rounds</u></div>
+<table>
+  <thead>
+    <tr>
+      <th>
+        Start Time
+      </th>
+      <th>
+        # of Holes
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let teeTime of teeTimes">
+      <td>
+        {{teeTime.startTime | date: 'M/dd/yyyy hh:mm'}}
+      </td>
+      <td>
+        {{teeTime.numberOfHoles}}
+      </td>
+    </tr>
+  </tbody>
+
+</table>
+
+
+
+
+<style>
+  td {
+    font: bold;
+    border: solid 1px black;
+    padding: 16px;
+    font-size: 14px;
+    text-align: center;
+    color: black;
+  }
+  th{
+    padding: 26px;
+    font-size: 24px;
+    text-align: center;
+    border: solid 1px black;
+    
+  }
+</style>

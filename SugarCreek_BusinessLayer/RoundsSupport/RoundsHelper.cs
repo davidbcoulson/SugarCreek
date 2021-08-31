@@ -66,7 +66,7 @@ namespace SugarCreek_BusinessLayer.RoundsSupport
             using (GolfingEntities db = new GolfingEntities())
             {
                 var golfer = db.Golfers.Where(x => x.UserId == golferId).FirstOrDefault();
-                var mappers = db.RoundMappers.Include("Round").Where(x => x.GolferId == golfer.Id).ToList();
+                var mappers = db.RoundMappers.Include("Round").Where(x => x.GolferId == golfer.Id && x.Round.TeeTime.StartTime.Value >= DateTime.Now).ToList();
                 foreach (var item in mappers)
                 {
                     GolfRound gr = new GolfRound()
