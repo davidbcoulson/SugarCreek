@@ -10,7 +10,13 @@ namespace SugarCreek.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                return View();
+            }
+            else {
+                return RedirectToRoute("login");
+            }
         }
 
         public ActionResult About()

@@ -10,5 +10,7 @@ namespace SugarCreek_BusinessLayer.Models
     {
         public DateTime StartTime { get; set; }
         public int NumberOfHoles { get; set; }
+        public int NumberOfBookedGolfers { get; set; }
+        public int RemainingOpenings { get; set; }
     }
 }

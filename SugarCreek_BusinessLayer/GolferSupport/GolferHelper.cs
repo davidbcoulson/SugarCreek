@@ -11,7 +11,7 @@ namespace SugarCreek_BusinessLayer.GolferSupport
     {
         public static Golfer FindGolfer(string userId)
         {
-            using (SugarCreekEntities db = new SugarCreekEntities())
+            using (GolfingEntities db = new GolfingEntities())
             {
                 return db.Golfers.Where(x => x.UserId == userId).FirstOrDefault();
 
@@ -21,7 +21,7 @@ namespace SugarCreek_BusinessLayer.GolferSupport
 
         public static void CreateGolfer(Golfer golfer)
         {
-            using (SugarCreekEntities db = new SugarCreekEntities())
+            using (GolfingEntities db = new GolfingEntities())
             {
                 db.Golfers.Add(golfer);
                 db.SaveChanges();

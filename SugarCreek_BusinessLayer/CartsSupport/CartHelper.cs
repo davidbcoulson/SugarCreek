@@ -11,7 +11,7 @@ namespace SugarCreek_BusinessLayer.CartsSupport
     {
         public static void CreateCart(Cart cart)
         {
-            using (SugarCreekEntities db = new SugarCreekEntities())
+            using (GolfingEntities db = new GolfingEntities())
             {
                 db.Carts.Add(cart);
                 db.SaveChanges();

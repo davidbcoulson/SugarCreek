@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9380a4f196a645bc824f8e7658284275" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="GolfingModel.AspNetRole" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GolfingModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="GolfingModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GolfingModel.AspNetUser" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GolfingModel.CartRoundMapper" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="GolfingModel.Cart" Width="1.5" PointX="7.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GolfingModel.Golfer" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GolfingModel.RoundMapper" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="GolfingModel.Round" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GolfingModel.TeeTime" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <AssociationConnector Association="GolfingModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="GolfingModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="GolfingModel.FK__CartRoundMappers__Carts" ManuallyRouted="false" />
+        <AssociationConnector Association="GolfingModel.FK__RoundMappers__Golfers" ManuallyRouted="false" />
+        <AssociationConnector Association="GolfingModel.FK__RoundMappers__Rounds" ManuallyRouted="false" />
+        <AssociationConnector Association="GolfingModel.FK__Rounds__TeeTimes" ManuallyRouted="false" />
+        <AssociationConnector Association="GolfingModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

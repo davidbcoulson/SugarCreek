@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SugarCreek.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -25,21 +26,21 @@ namespace SugarCreek
                 defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional }
                 );
 
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
-
             //routes.MapRoute(
-            //    name: "DefaultAccount",
+            //    name: "Default",
             //    url: "{controller}/{action}/{id}",
-            //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-            //    constraints: new
-            //    {
-            //        serverRoute = new ServerRouteConstraint(url => url.PathAndQuery.StartsWith("/Account/", StringComparison.InvariantCultureIgnoreCase))
-            //    }
+            //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             //);
+
+            routes.MapRoute(
+                name: "DefaultAccount",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                constraints: new
+                {
+                    serverRoute = new ServerRouteConstraint(url => url.PathAndQuery.StartsWith("/Account/", StringComparison.InvariantCultureIgnoreCase))
+                }
+            );
 
             routes.MapRoute(
                 name: "Angular",

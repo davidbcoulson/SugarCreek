@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SugarCreek", "SugarCreek.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SugarCreek_BusinessLayer", "..\SugarCreek_BusinessLayer\SugarCreek_BusinessLayer.csproj", "{AB90AA7C-9223-4FD5-84AE-8966D0C35A5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SugarCreek_DataLayer", "..\SugarCreek_DataLayer\SugarCreek_DataLayer.csproj", "{2C827E40-5D18-4DE4-A90E-36CA1D29F78A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SugarCreek_DataLayer", "..\SugarCreek_DataLayer\SugarCreek_DataLayer.csproj", "{0B339220-7A81-45B8-82E3-2F629350E849}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{AB90AA7C-9223-4FD5-84AE-8966D0C35A5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB90AA7C-9223-4FD5-84AE-8966D0C35A5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB90AA7C-9223-4FD5-84AE-8966D0C35A5B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C827E40-5D18-4DE4-A90E-36CA1D29F78A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C827E40-5D18-4DE4-A90E-36CA1D29F78A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C827E40-5D18-4DE4-A90E-36CA1D29F78A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C827E40-5D18-4DE4-A90E-36CA1D29F78A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B339220-7A81-45B8-82E3-2F629350E849}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B339220-7A81-45B8-82E3-2F629350E849}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B339220-7A81-45B8-82E3-2F629350E849}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B339220-7A81-45B8-82E3-2F629350E849}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

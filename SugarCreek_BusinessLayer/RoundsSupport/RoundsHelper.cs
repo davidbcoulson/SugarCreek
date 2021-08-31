@@ -22,7 +22,7 @@ namespace SugarCreek_BusinessLayer.RoundsSupport
             };
 
 
-            using (SugarCreekEntities db = new SugarCreekEntities())
+            using (GolfingEntities db = new GolfingEntities())
             {
                 db.Rounds.Add(round);
                 db.SaveChanges();
@@ -33,7 +33,7 @@ namespace SugarCreek_BusinessLayer.RoundsSupport
 
         public static void CreateTeeTime(TeeTime tt)
         {
-            using (SugarCreekEntities db = new SugarCreekEntities())
+            using (GolfingEntities db = new GolfingEntities())
             {
                 db.TeeTimes.Add(tt);
                 db.SaveChanges();
@@ -42,7 +42,7 @@ namespace SugarCreek_BusinessLayer.RoundsSupport
 
         public static void CreateRoundMapper(Guid roundId, string golferId)
         {
-            using (SugarCreekEntities db = new SugarCreekEntities())
+            using (GolfingEntities db = new GolfingEntities())
             {
                 var golfer = db.Golfers.Where(x => x.UserId == golferId).FirstOrDefault();
 
@@ -63,7 +63,7 @@ namespace SugarCreek_BusinessLayer.RoundsSupport
         public static List<GolfRound> GetRounds(string golferId)
         {
             List<GolfRound> rounds = new List<GolfRound>();
-            using (SugarCreekEntities db = new SugarCreekEntities())
+            using (GolfingEntities db = new GolfingEntities())
             {
                 var golfer = db.Golfers.Where(x => x.UserId == golferId).FirstOrDefault();
                 var mappers = db.RoundMappers.Include("Round").Where(x => x.GolferId == golfer.Id).ToList();
@@ -78,6 +78,15 @@ namespace SugarCreek_BusinessLayer.RoundsSupport
                 }
                 return rounds;
             }
+        }
+
+        public static List<GolfRound> GetAvailableRoundsForToday() 
+        {
+            List<GolfRound> rounds = new List<GolfRound>();
+
+
+
+            return rounds;
         }
     }
 }

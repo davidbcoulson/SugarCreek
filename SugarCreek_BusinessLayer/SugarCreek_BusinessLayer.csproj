@@ -55,20 +55,23 @@
     <Compile Include="BookingSupport\Booking.cs" />
     <Compile Include="CartsSupport\CartHelper.cs" />
     <Compile Include="GolferSupport\GolferHelper.cs" />
+    <Compile Include="Models\FutureDateRequest.cs" />
     <Compile Include="Models\GolfRound.cs" />
+    <Compile Include="Models\TeeTimeOption.cs" />
+    <Compile Include="Models\TeeTimeRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoundsSupport\RoundsHelper.cs" />
     <Compile Include="TeeTimeSupport\TeeTimes.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SugarCreek_DataLayer\SugarCreek_DataLayer.csproj">
-      <Project>{2c827e40-5d18-4de4-a90e-36ca1d29f78a}</Project>
-      <Name>SugarCreek_DataLayer</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SugarCreek_DataLayer\SugarCreek_DataLayer.csproj">
+      <Project>{0b339220-7a81-45b8-82e3-2f629350e849}</Project>
+      <Name>SugarCreek_DataLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -6,7 +6,7 @@ using System.Web.Routing;
 
 namespace SugarCreek.App_Start
 {
-    public class ServerRouteConstraint
+    public class ServerRouteConstraint : IRouteConstraint
     {
         private readonly Func<Uri, bool> _predicate;
 

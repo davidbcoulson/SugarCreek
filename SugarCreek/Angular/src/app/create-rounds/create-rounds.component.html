@@ -1,19 +1,32 @@
-<button>Add a New Round</button>
-<form [formGroup]="teeTimeRequest" style="background-color: rgba(255, 255, 255, 0.09); padding: 16px; border-radius: 16px;" [class]="formclass">
-  <div class="form-group">
-    <label style="color: #fff;display: flex;">Name:</label>
-    <input type="datetime-local" class="form-control" formControlName="teeTime" required="required" placeholder="TeeTime" />
+
+
+<div class="row">
+  <div class="col-lg-4">
+    <form [formGroup]="teeTimeRequest" style="background-color: rgba(255, 255, 255, 0.09); padding: 16px; border-radius: 16px;" [class]="formclass">
+      <div class="form-group">
+        <label style="color: #fff;display: flex;">Name:</label>
+        <input type="datetime-local" class="form-control" formControlName="teeTime" required="required" placeholder="TeeTime" />
+      </div>
+      <div>
+        <!--You will need to put in a table (scroll-able) that will have times and number of spots lift-->
+      </div>
+      <div>
+        <!--This will be for the number of golfers you are adding as guest to your round.-->
+      </div>
+      <div class="btn-group">
+        <input type="hidden" formControlName="numberOfHoles" />
+        <button type="button" [ngClass]="roundHoleCount === 9 ? 'btn btn-success' : 'btn btn-outline-success'" (click)="updateHoleCount(9)">9</button>
+        <button type="button" [ngClass]="roundHoleCount === 18 ? 'btn btn-success' : 'btn btn-outline-success'" (click)="updateHoleCount(18)">18</button>
+      </div>
+      <div class="btn-group">
+        <button type="button" class="btn btn-outline-success">Walking</button>
+        <button type="button" class="btn btn-outline-success">Cart</button>
+      </div>
+      <div class="form-group">
+        <button class="btn draw-border" type="submit" (click)="submitForm()">Submit</button>
+      </div>
+    </form>
   </div>
-  <div class="form-group">
-    <label style="color: #fff;display: flex;">Name:</label>
-    <input type="number" class="form-control" formControlName="numberOfHoles" required="required" placeholder="Number Of Holes" />
-  </div>
-  <div class="form-group">
-    <label style="color: #fff;display: flex;">Name:</label>
-    <input type="checkbox" class="form-control" formControlName="cart" required="required" placeholder="Cart?" />
-  </div>
-  <div class="form-group">
-    <button class="btn draw-border" type="submit" (click)="submitForm()">Submit</button>
-  </div>
-</form>
+</div>
+
 

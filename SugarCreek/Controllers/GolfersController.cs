@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SugarCreek_BusinessLayer.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -13,6 +14,12 @@ namespace SugarCreek.Controllers
         public string ConnectionTest()
         {
             return "connection made";
+        }
+
+        [HttpPost]
+        public bool CreateRound([FromBody] TeeTimeRequest teeTimeRequest) 
+        {
+            return true;
         }
     }
 }

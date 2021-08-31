@@ -1,0 +1,621 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GolfingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CartRoundMappers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CartId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoundId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Carts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Reserved" Type="bit" />
+          <Property Name="CartNumber" Type="int" />
+          <Property Name="OutOfOrder" Type="bit" />
+        </EntityType>
+        <EntityType Name="Golfers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="GolfersName" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="RoundMappers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="GolferId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoundId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rounds">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TeeTimeId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CartId" Type="uniqueidentifier" />
+          <Property Name="NumberOfHoles" Type="int" />
+        </EntityType>
+        <EntityType Name="TeeTimes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__CartRoundMappers__Carts">
+          <End Role="Carts" Type="Self.Carts" Multiplicity="1" />
+          <End Role="CartRoundMappers" Type="Self.CartRoundMappers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CartRoundMappers">
+              <PropertyRef Name="CartId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RoundMappers__Golfers">
+          <End Role="Golfers" Type="Self.Golfers" Multiplicity="1" />
+          <End Role="RoundMappers" Type="Self.RoundMappers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Golfers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoundMappers">
+              <PropertyRef Name="GolferId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RoundMappers__Rounds">
+          <End Role="Rounds" Type="Self.Rounds" Multiplicity="1" />
+          <End Role="RoundMappers" Type="Self.RoundMappers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rounds">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoundMappers">
+              <PropertyRef Name="RoundId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rounds__TeeTimes">
+          <End Role="TeeTimes" Type="Self.TeeTimes" Multiplicity="1" />
+          <End Role="Rounds" Type="Self.Rounds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeeTimes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rounds">
+              <PropertyRef Name="TeeTimeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUserRoles_AspNetRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1" />
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUserRoles_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GolfingModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CartRoundMappers" EntityType="Self.CartRoundMappers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Carts" EntityType="Self.Carts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Golfers" EntityType="Self.Golfers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoundMappers" EntityType="Self.RoundMappers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rounds" EntityType="Self.Rounds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeeTimes" EntityType="Self.TeeTimes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CartRoundMappers__Carts" Association="Self.FK__CartRoundMappers__Carts">
+            <End Role="Carts" EntitySet="Carts" />
+            <End Role="CartRoundMappers" EntitySet="CartRoundMappers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RoundMappers__Golfers" Association="Self.FK__RoundMappers__Golfers">
+            <End Role="Golfers" EntitySet="Golfers" />
+            <End Role="RoundMappers" EntitySet="RoundMappers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RoundMappers__Rounds" Association="Self.FK__RoundMappers__Rounds">
+            <End Role="Rounds" EntitySet="Rounds" />
+            <End Role="RoundMappers" EntitySet="RoundMappers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rounds__TeeTimes" Association="Self.FK__Rounds__TeeTimes">
+            <End Role="TeeTimes" EntitySet="TeeTimes" />
+            <End Role="Rounds" EntitySet="Rounds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUserRoles_AspNetRoles" Association="Self.FK_AspNetUserRoles_AspNetRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUserRoles_AspNetUsers" Association="Self.FK_AspNetUserRoles_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GolfingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="CartRoundMapper">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CartId" Type="Guid" Nullable="false" />
+          <Property Name="RoundId" Type="Guid" />
+          <NavigationProperty Name="Cart" Relationship="Self.FK__CartRoundMappers__Carts" FromRole="CartRoundMappers" ToRole="Carts" />
+        </EntityType>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Reserved" Type="Boolean" />
+          <Property Name="CartNumber" Type="Int32" />
+          <Property Name="OutOfOrder" Type="Boolean" />
+          <NavigationProperty Name="CartRoundMappers" Relationship="Self.FK__CartRoundMappers__Carts" FromRole="Carts" ToRole="CartRoundMappers" />
+        </EntityType>
+        <EntityType Name="Golfer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GolfersName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RoundMappers" Relationship="Self.FK__RoundMappers__Golfers" FromRole="Golfers" ToRole="RoundMappers" />
+        </EntityType>
+        <EntityType Name="RoundMapper">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="GolferId" Type="Guid" Nullable="false" />
+          <Property Name="RoundId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Golfer" Relationship="Self.FK__RoundMappers__Golfers" FromRole="RoundMappers" ToRole="Golfers" />
+          <NavigationProperty Name="Round" Relationship="Self.FK__RoundMappers__Rounds" FromRole="RoundMappers" ToRole="Rounds" />
+        </EntityType>
+        <EntityType Name="Round">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="TeeTimeId" Type="Guid" Nullable="false" />
+          <Property Name="CartId" Type="Guid" />
+          <Property Name="NumberOfHoles" Type="Int32" />
+          <NavigationProperty Name="RoundMappers" Relationship="Self.FK__RoundMappers__Rounds" FromRole="Rounds" ToRole="RoundMappers" />
+          <NavigationProperty Name="TeeTime" Relationship="Self.FK__Rounds__TeeTimes" FromRole="Rounds" ToRole="TeeTimes" />
+        </EntityType>
+        <EntityType Name="TeeTime">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Rounds" Relationship="Self.FK__Rounds__TeeTimes" FromRole="TeeTimes" ToRole="Rounds" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CartRoundMappers__Carts">
+          <End Role="Carts" Type="Self.Cart" Multiplicity="1" />
+          <End Role="CartRoundMappers" Type="Self.CartRoundMapper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CartRoundMappers">
+              <PropertyRef Name="CartId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RoundMappers__Golfers">
+          <End Role="Golfers" Type="Self.Golfer" Multiplicity="1" />
+          <End Role="RoundMappers" Type="Self.RoundMapper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Golfers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoundMappers">
+              <PropertyRef Name="GolferId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RoundMappers__Rounds">
+          <End Role="Rounds" Type="Self.Round" Multiplicity="1" />
+          <End Role="RoundMappers" Type="Self.RoundMapper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rounds">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoundMappers">
+              <PropertyRef Name="RoundId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rounds__TeeTimes">
+          <End Role="TeeTimes" Type="Self.TeeTime" Multiplicity="1" />
+          <End Role="Rounds" Type="Self.Round" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeeTimes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rounds">
+              <PropertyRef Name="TeeTimeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="GolfingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="CartRoundMappers" EntityType="Self.CartRoundMapper" />
+          <EntitySet Name="Carts" EntityType="Self.Cart" />
+          <EntitySet Name="Golfers" EntityType="Self.Golfer" />
+          <EntitySet Name="RoundMappers" EntityType="Self.RoundMapper" />
+          <EntitySet Name="Rounds" EntityType="Self.Round" />
+          <EntitySet Name="TeeTimes" EntityType="Self.TeeTime" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CartRoundMappers__Carts" Association="Self.FK__CartRoundMappers__Carts">
+            <End Role="Carts" EntitySet="Carts" />
+            <End Role="CartRoundMappers" EntitySet="CartRoundMappers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RoundMappers__Golfers" Association="Self.FK__RoundMappers__Golfers">
+            <End Role="Golfers" EntitySet="Golfers" />
+            <End Role="RoundMappers" EntitySet="RoundMappers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RoundMappers__Rounds" Association="Self.FK__RoundMappers__Rounds">
+            <End Role="Rounds" EntitySet="Rounds" />
+            <End Role="RoundMappers" EntitySet="RoundMappers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rounds__TeeTimes" Association="Self.FK__Rounds__TeeTimes">
+            <End Role="TeeTimes" EntitySet="TeeTimes" />
+            <End Role="Rounds" EntitySet="Rounds" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GolfingModelStoreContainer" CdmEntityContainer="GolfingEntities">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="GolfingModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="GolfingModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="GolfingModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="GolfingModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CartRoundMappers">
+            <EntityTypeMapping TypeName="GolfingModel.CartRoundMapper">
+              <MappingFragment StoreEntitySet="CartRoundMappers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CartId" ColumnName="CartId" />
+                <ScalarProperty Name="RoundId" ColumnName="RoundId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Carts">
+            <EntityTypeMapping TypeName="GolfingModel.Cart">
+              <MappingFragment StoreEntitySet="Carts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Reserved" ColumnName="Reserved" />
+                <ScalarProperty Name="CartNumber" ColumnName="CartNumber" />
+                <ScalarProperty Name="OutOfOrder" ColumnName="OutOfOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Golfers">
+            <EntityTypeMapping TypeName="GolfingModel.Golfer">
+              <MappingFragment StoreEntitySet="Golfers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="GolfersName" ColumnName="GolfersName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoundMappers">
+            <EntityTypeMapping TypeName="GolfingModel.RoundMapper">
+              <MappingFragment StoreEntitySet="RoundMappers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GolferId" ColumnName="GolferId" />
+                <ScalarProperty Name="RoundId" ColumnName="RoundId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rounds">
+            <EntityTypeMapping TypeName="GolfingModel.Round">
+              <MappingFragment StoreEntitySet="Rounds">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TeeTimeId" ColumnName="TeeTimeId" />
+                <ScalarProperty Name="CartId" ColumnName="CartId" />
+                <ScalarProperty Name="NumberOfHoles" ColumnName="NumberOfHoles" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeeTimes">
+            <EntityTypeMapping TypeName="GolfingModel.TeeTime">
+              <MappingFragment StoreEntitySet="TeeTimes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="GolfingModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -12,16 +12,21 @@ export class CreateRoundsComponent implements OnInit {
   formclass: string;
   loaderclass: string;
   successMessage: string;
+  activeButton: 'btn-success';
+  nonActiveButton: 'btn-outline-success';
+  roundHoleCount: number;
 
   teeTimeRequest = new FormGroup({
     teeTime: new FormControl(''),
     numberOfHoles: new FormControl(''),
+    numberOfGolfers: new FormControl(''),
     cart: new FormControl(''),
   })
 
   constructor(private service: CreateRoundService) { }
 
   ngOnInit(): void {
+    this.roundHoleCount = 0
   }
 
   submitForm() {
@@ -30,5 +35,9 @@ export class CreateRoundsComponent implements OnInit {
       console.log(x);
     }, err => { console.log(err) }, () => {
     })
+  }
+
+  updateHoleCount(countPassed) {
+    this.roundHoleCount = countPassed
   }
 }

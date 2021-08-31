@@ -1,2 +1,22 @@
-<a [routerLink]="['/CreateRounds']" >Create a Round</a>
-<a [routerLink]="['/GetRounds']">Get a Round</a>
+<div class="container" style="padding-top:26px;">
+  <div class="row jumbotron">
+    <h1 class="display-4">Sugar Creek Golf Course</h1>
+    <p class="lead">The perfect 18 is waiting at Sugar Creek Golf Course. Established in 2021, see what Sugar has to offer.</p>
+    <hr />
+    <div class="col-lg-6">
+      <div class="card">
+        <img class="card-img-top" src="../../../../Images/booktimeimage.jpg" alt="book tee time now.">
+        <div class="card-body text-center">
+          <h5 class="card-title">Book a Round</h5>
+          <p class="card-text">
+            Welcome Back! Book your Tee Time at Sugar Creek. Tee Times are subject to weather and may alter. Rain checks are available.
+          </p>
+          <a [routerLink]="['/CreateRounds']" class="btn btn-primary">Book</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <a [routerLink]="['/GetRounds']">Get a Round</a>
+    </div>
+  </div>
+</div>

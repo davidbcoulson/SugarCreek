@@ -6,6 +6,7 @@ using SugarCreek_DataLayer;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
+using SugarCreek_BusinessLayer.TeeTimeSupport;
 
 namespace SugarCreek.Controllers
 {
@@ -14,7 +15,7 @@ namespace SugarCreek.Controllers
         [Route("api/rounds/createRound")]
         [HttpPost]
         [Authorize]
-        public GolfRound CreateGolfRound([FromBody] IncomingRoundRequest request )
+        public GolfRound CreateGolfRound([FromBody] TeeTimeRequest request )
         {
             if (request != null)
             {
@@ -50,6 +51,15 @@ namespace SugarCreek.Controllers
             return RoundsHelper.GetRounds(User.Identity.GetUserId());
         }
 
+
+        [Route("api/rounds/getOpenRounds")]
+        [HttpGet]
+        [Authorize]
+
+        public List<TeeTimeOption> GetTodaysOpenRounds()
+        {
+            return TeeTimes.GetDailyTeeTimes();
+        }
 
     }
 }

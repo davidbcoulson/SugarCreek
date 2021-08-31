@@ -24,7 +24,6 @@ namespace SugarCreek_DataLayer
         public string UserId { get; set; }
         public string GolfersName { get; set; }
     
-        public virtual AspNetUser AspNetUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RoundMapper> RoundMappers { get; set; }
     }

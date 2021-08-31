@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2C827E40-5D18-4DE4-A90E-36CA1D29F78A}</ProjectGuid>
+    <ProjectGuid>{0B339220-7A81-45B8-82E3-2F629350E849}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SugarCreek_DataLayer</RootNamespace>
@@ -51,80 +51,78 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AspNetRole.cs">
-      <DependentUpon>SugarCreekModel.tt</DependentUpon>
+      <DependentUpon>GolfingModel.tt</DependentUpon>
     </Compile>
     <Compile Include="AspNetUser.cs">
-      <DependentUpon>SugarCreekModel.tt</DependentUpon>
+      <DependentUpon>GolfingModel.tt</DependentUpon>
     </Compile>
     <Compile Include="AspNetUserClaim.cs">
-      <DependentUpon>SugarCreekModel.tt</DependentUpon>
+      <DependentUpon>GolfingModel.tt</DependentUpon>
     </Compile>
     <Compile Include="AspNetUserLogin.cs">
-      <DependentUpon>SugarCreekModel.tt</DependentUpon>
+      <DependentUpon>GolfingModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Cart.cs">
-      <DependentUpon>SugarCreekModel.tt</DependentUpon>
+      <DependentUpon>GolfingModel.tt</DependentUpon>
     </Compile>
     <Compile Include="CartRoundMapper.cs">
-      <DependentUpon>SugarCreekModel.tt</DependentUpon>
+      <DependentUpon>GolfingModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
     <Compile Include="Golfer.cs">
-      <DependentUpon>SugarCreekModel.tt</DependentUpon>
+      <DependentUpon>GolfingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GolfingModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GolfingModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GolfingModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GolfingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GolfingModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GolfingModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Round.cs">
-      <DependentUpon>SugarCreekModel.tt</DependentUpon>
+      <DependentUpon>GolfingModel.tt</DependentUpon>
     </Compile>
     <Compile Include="RoundMapper.cs">
-      <DependentUpon>SugarCreekModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SugarCreekModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SugarCreekModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SugarCreekModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SugarCreekModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SugarCreekModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SugarCreekModel.edmx</DependentUpon>
+      <DependentUpon>GolfingModel.tt</DependentUpon>
     </Compile>
     <Compile Include="TeeTime.cs">
-      <DependentUpon>SugarCreekModel.tt</DependentUpon>
+      <DependentUpon>GolfingModel.tt</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="SugarCreekModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SugarCreekModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="packages.config" />
-    <None Include="SugarCreekModel.edmx.diagram">
-      <DependentUpon>SugarCreekModel.edmx</DependentUpon>
+    <EntityDeploy Include="GolfingModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GolfingModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="GolfingModel.edmx.diagram">
+      <DependentUpon>GolfingModel.edmx</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SugarCreekModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>SugarCreekModel.Context.cs</LastGenOutput>
-      <DependentUpon>SugarCreekModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="SugarCreekModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SugarCreekModel.edmx</DependentUpon>
-      <LastGenOutput>SugarCreekModel.cs</LastGenOutput>
-    </Content>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GolfingModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GolfingModel.edmx</DependentUpon>
+      <LastGenOutput>GolfingModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="GolfingModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GolfingModel.edmx</DependentUpon>
+      <LastGenOutput>GolfingModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
